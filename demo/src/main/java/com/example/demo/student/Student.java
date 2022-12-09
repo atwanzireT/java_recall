@@ -2,9 +2,9 @@ package com.example.demo.student;
 
 import java.time.LocalDate;
 
-import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.SequenceGenerator;
@@ -16,8 +16,7 @@ public class Student {
     @Id
     @SequenceGenerator(
         name = "student_sequence",
-        sequenceName = "student_sequence",
-        allocationSize = 1
+        sequenceName = "student_sequence"
     )
 
     @GeneratedValue(

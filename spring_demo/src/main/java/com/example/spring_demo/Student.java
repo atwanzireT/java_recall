@@ -1,15 +1,65 @@
 package com.example.spring_demo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import static jakarta.persistence.GenerationType.SEQUENCE;
 
-@Entity
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+
+@Entity(name = "Student")
+@Table(
+    name = "Student",
+    uniqueConstraints = {
+        @UniqueConstraint(name ="student_email_unique", columnNames = "email")
+    }
+)
 public class Student {
     @Id
+    @SequenceGenerator(
+        name = "student_sequence",
+        sequenceName = "student_sequence",
+        allocationSize = 1
+    )
+    @GeneratedValue(
+        strategy = SEQUENCE,
+        generator = "student_sequence" 
+    )
+
+    @Column(
+        name = "id",
+        updatable = false
+    )
     private Long id;
+
+    @Column(
+        name = "firstname",
+        nullable = false,
+        columnDefinition = "TEXT"
+    )
     private String firstname;
+
+    @Column(
+        name = "lastname",
+        nullable = false,
+        columnDefinition = "TEXT"
+    )
     private String lastname;
+
+    @Column(
+        name = "email",
+        nullable = false,
+        columnDefinition = "TEXT"
+    )
     private String email;
+
+    @Column(
+        name = "age",
+        nullable = false
+    )
     private Integer age;
     
 

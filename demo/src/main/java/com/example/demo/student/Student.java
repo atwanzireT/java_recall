@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table
-public class Student {
+public class  Student {
     @Id
     @SequenceGenerator(
         name = "student_sequence",
@@ -28,7 +28,7 @@ public class Student {
     private Long id;
     private String name;
     private String email;
-    private int age;
+    private Integer age;
     
     public Student(Long id, String name, String email, int i) {
         this.id = id;
